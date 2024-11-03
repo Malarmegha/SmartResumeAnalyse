@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Smart Resume Analyzer</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Smart Resume Analyzer</h1>
+        <form method="post" action="/analyze">
+            <textarea name="resume" rows="10" cols="50" placeholder="Paste your resume here..." required></textarea>
+            <textarea name="job_description" rows="10" cols="50" placeholder="Paste the job description here..." required></textarea>
+            <button type="submit">Analyze</button>
+        </form>
+
+        {% if matches is not none %}
+            <h2>Matching Keywords</h2>
+            <p>Resume Keywords: {{ resume_keywords }}</p>
+            <p>Job Description Keywords: {{ job_description_keywords }}</p>
+            <p>Matches: {{ matches }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
